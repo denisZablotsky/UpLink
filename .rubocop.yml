@@ -1,0 +1,28 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'vendor/**/*'
+    - 'lib/api/**/*'
+    - 'node_modules/**/*'
+    - 'test/test_helper.rb'
+Metrics/AbcSize:
+  Max: 25
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 120
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 15
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 60
