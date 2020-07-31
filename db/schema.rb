@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_133732) do
+ActiveRecord::Schema.define(version: 2020_07_31_135002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "song_users", force: :cascade do |t|
+    t.integer "song_id"
+    t.integer "user_id"
+  end
+
+  create_table "song_words", force: :cascade do |t|
+    t.integer "song_id"
+    t.integer "word_id"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "title"
+    t.string "artist"
+    t.string "cover_url"
+    t.string "lyric"
+    t.integer "lyric_id"
+    t.string "checksum"
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.string "value"
+    t.string "picture_url"
+    t.integer "word_id"
+    t.index ["word_id"], name: "index_translations_on_word_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +51,15 @@ ActiveRecord::Schema.define(version: 2020_07_29_133732) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string "value"
+    t.string "transcription"
+    t.string "sound_url"
+    t.integer "status"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_words_on_user_id"
   end
 
 end
