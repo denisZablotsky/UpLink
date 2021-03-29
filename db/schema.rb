@@ -18,11 +18,15 @@ ActiveRecord::Schema.define(version: 2020_07_31_135002) do
   create_table "song_users", force: :cascade do |t|
     t.integer "song_id"
     t.integer "user_id"
+    t.index ["song_id"], name: "index_song_users_on_song_id"
+    t.index ["user_id"], name: "index_song_users_on_user_id"
   end
 
   create_table "song_words", force: :cascade do |t|
     t.integer "song_id"
     t.integer "word_id"
+    t.index ["song_id"], name: "index_song_words_on_song_id"
+    t.index ["word_id"], name: "index_song_words_on_word_id"
   end
 
   create_table "songs", force: :cascade do |t|
