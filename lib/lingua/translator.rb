@@ -8,7 +8,7 @@ module Lingua
 
     def call
       response = HTTParty.get(full_url(phrase))
-      parse JSON.parse(response)
+      parse JSON.parse(response.to_s)
     end
 
     private
